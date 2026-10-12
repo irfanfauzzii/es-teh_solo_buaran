@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts Inter & Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -27,6 +27,7 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
                     }
                 }
             }
@@ -114,9 +115,19 @@
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100 shadow-xs transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <a href="#" class="flex items-center gap-2.5 group">
-                    <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-md border border-slate-100 group-hover:scale-105 transition-all overflow-hidden">
-                        <img src="logo.png" alt="Logo Es Teh Solo" class="w-full h-full object-contain">
+                
+                <!-- LOGO DENGAN GAMBAR VEKTOR PERSIS -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="h-11 px-2 py-1 bg-white rounded-xl shadow-xs border border-slate-100 flex items-center justify-center group-hover:scale-105 transition-all">
+                        <svg viewBox="0 0 200 200" class="h-full w-auto">
+                            <!-- 3 Pohon/Daun Hijau -->
+                            <path d="M60,115 L35,115 L50,90 L40,90 L55,65 L45,65 L65,35 L85,65 L75,65 L90,90 L80,90 L95,115 Z" fill="#22c55e" />
+                            <path d="M100,115 L75,115 L90,90 L80,90 L95,65 L85,65 L105,35 L125,65 L115,65 L130,90 L120,90 L135,115 Z" fill="#22c55e" />
+                            <path d="M140,115 L115,115 L130,90 L120,90 L135,65 L125,65 L145,35 L165,65 L155,65 L170,90 L160,90 L175,115 Z" fill="#22c55e" />
+                            <!-- Teks Es Teh S.O.L.O -->
+                            <text x="100" y="152" text-anchor="middle" fill="#0f2b5c" font-family="'Playfair Display', serif" font-weight="900" font-size="32">Es Teh</text>
+                            <text x="100" y="175" text-anchor="middle" fill="#0f2b5c" font-family="'Inter', sans-serif" font-weight="800" font-size="14" letter-spacing="3">S.O.L.O</text>
+                        </svg>
                     </div>
                     <div>
                         <span class="font-black text-lg sm:text-xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">ES TEH SOLO</span>
@@ -240,9 +251,15 @@
                                 <div class="w-2 h-2 rounded-full bg-white/70 absolute top-24 left-8"></div>
                             </div>
 
-                            <!-- Logo Stiker Cup -->
-                            <div class="absolute top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md p-2 rounded-2xl border-2 border-emerald-200 shadow-xl flex items-center justify-center">
-                                <img src="logo.png" alt="Logo Es Teh Solo" class="h-10 object-contain">
+                            <!-- Logo Stiker Cup PERSIS -->
+                            <div class="absolute top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border-2 border-emerald-200 shadow-xl flex items-center justify-center">
+                                <svg viewBox="0 0 200 200" class="h-12 w-auto">
+                                    <path d="M60,115 L35,115 L50,90 L40,90 L55,65 L45,65 L65,35 L85,65 L75,65 L90,90 L80,90 L95,115 Z" fill="#22c55e" />
+                                    <path d="M100,115 L75,115 L90,90 L80,90 L95,65 L85,65 L105,35 L125,65 L115,65 L130,90 L120,90 L135,115 Z" fill="#22c55e" />
+                                    <path d="M140,115 L115,115 L130,90 L120,90 L135,65 L125,65 L145,35 L165,65 L155,65 L170,90 L160,90 L175,115 Z" fill="#22c55e" />
+                                    <text x="100" y="152" text-anchor="middle" fill="#0f2b5c" font-family="'Playfair Display', serif" font-weight="900" font-size="32">Es Teh</text>
+                                    <text x="100" y="175" text-anchor="middle" fill="#0f2b5c" font-family="'Inter', sans-serif" font-weight="800" font-size="14" letter-spacing="3">S.O.L.O</text>
+                                </svg>
                             </div>
 
                             <!-- Kilatan Cahaya Kaca Gelas -->
@@ -519,7 +536,11 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
                 <div class="flex items-center gap-2">
                     <div class="w-7 h-7 rounded-lg bg-white p-0.5 flex items-center justify-center font-bold shadow-md overflow-hidden">
-                        <img src="logo.png" alt="Logo Es Teh Solo" class="w-full h-full object-contain">
+                        <svg viewBox="0 0 200 200" class="w-full h-full">
+                            <path d="M60,115 L35,115 L50,90 L40,90 L55,65 L45,65 L65,35 L85,65 L75,65 L90,90 L80,90 L95,115 Z" fill="#22c55e" />
+                            <path d="M100,115 L75,115 L90,90 L80,90 L95,65 L85,65 L105,35 L125,65 L115,65 L130,90 L120,90 L135,115 Z" fill="#22c55e" />
+                            <path d="M140,115 L115,115 L130,90 L120,90 L135,65 L125,65 L145,35 L165,65 L155,65 L170,90 L160,90 L175,115 Z" fill="#22c55e" />
+                        </svg>
                     </div>
                     <span class="font-extrabold text-white text-sm">ES TEH SOLO</span>
                     <span class="text-slate-500">| Buaran Tangerang Selatan</span>
@@ -563,8 +584,8 @@
         const calcWaBtn = document.getElementById('calc-wa-btn');
 
         function updateCalculator() {
-            const pricePerUnit = parseInt(calcService.value);
-            const cups = parseInt(calcWeight.value);
+            const pricePerUnit = parseInt(calcService.value) || 6000;
+            const cups = parseInt(calcWeight.value) || 1;
             const selectedOption = calcService.options[calcService.selectedIndex];
             const serviceName = selectedOption.getAttribute('data-name');
             
@@ -583,9 +604,9 @@
         calcService.addEventListener('change', updateCalculator);
         calcWeight.addEventListener('input', updateCalculator);
 
-        // Jalankan fungsi kalkulator terus sebaik sahaja halaman dimuatkan
-        window.addEventListener('DOMContentLoaded', updateCalculator);
+        // Langsung jalankan saat script dimuat
         updateCalculator();
+        document.addEventListener('DOMContentLoaded', updateCalculator);
     </script>
 </body>
 </html>
