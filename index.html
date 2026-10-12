@@ -3,813 +3,589 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superzy Laundry Place FK UIN - Laundry Premium & Higienis</title>
+    <title>Es Teh Solo Buaran - Segar, Autentik & Nikmat</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
                     colors: {
                         brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            200: '#bae0fd',
-                            300: '#7cc8fb',
-                            400: '#36aef7',
-                            500: '#0c92e7',
-                            600: '#0274c7',
-                            700: '#035ca3',
-                            800: '#074e87',
-                            900: '#0c4270',
-                            accent: '#06b6d4', /* Cyan */
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            dark: '#064e3b',
                         }
                     },
-                    boxShadow: {
-                        glass: '0 8px 32px 0 rgba(12, 146, 231, 0.12)',
-                        glassHover: '0 12px 40px 0 rgba(12, 146, 231, 0.25)',
-                        blueGlow: '0 0 25px rgba(6, 182, 212, 0.4)'
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-
     <style>
-        body {
-            background: linear-gradient(135deg, #e0effe 0%, #f0f7ff 40%, #e0f2fe 100%);
-            background-attachment: fixed;
-            color: #0f172a;
+        /* Animasi Daun Teh Ketiup Angin di Latar Belakang */
+        @keyframes windLeaves {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.85;
+            }
+            85% {
+                opacity: 0.85;
+            }
+            100% {
+                transform: translateY(105vh) translateX(120px) rotate(420deg);
+                opacity: 0;
+            }
         }
 
-        /* Ambient Animated Bubbles */
-        .bubble {
+        .tea-leaf {
             position: absolute;
-            border-radius: 50%;
-            background: rgba(12, 146, 231, 0.15);
-            backdrop-filter: blur(5px);
-            animation: floatUp 12s infinite linear;
+            top: -60px;
+            color: #22c55e;
+            filter: drop-shadow(0 4px 6px rgba(22, 163, 74, 0.2));
             pointer-events: none;
+            animation: windLeaves linear infinite;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+        /* Animasi Es Batu & Gelombang Teh dalam Gelas */
+        @keyframes floatIce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(15deg); }
+        }
+
+        @keyframes waveTea {
+            0%, 100% { transform: scaleY(1) translateY(0); }
+            50% { transform: scaleY(1.03) translateY(-3px); }
+        }
+
+        @keyframes steamUp {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
             50% { opacity: 0.6; }
-            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+            100% { transform: translateY(-25px) scale(1.2); opacity: 0; }
         }
 
-        /* Glassmorphism Components */
+        .animate-ice-1 { animation: floatIce 3s ease-in-out infinite; }
+        .animate-ice-2 { animation: floatIce 4s ease-in-out infinite 1s; }
+        .animate-ice-3 { animation: floatIce 3.5s ease-in-out infinite 0.5s; }
+        .animate-wave-tea { animation: waveTea 3s ease-in-out infinite; }
+        .animate-steam { animation: steamUp 2.5s ease-out infinite; }
+
+        /* Glassmorphism */
         .glass-card {
-            background: rgba(255, 255, 255, 0.72);
+            background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 30px rgba(2, 116, 199, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 20px 40px -15px rgba(6, 78, 59, 0.08);
         }
 
-        .glass-card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card-hover:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(2, 116, 199, 0.18);
-            border-color: rgba(6, 182, 212, 0.5);
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-        }
-
-        /* Custom Before After Slider */
-        .ba-container {
-            position: relative;
-            overflow: hidden;
-            user-select: none;
-        }
-        .ba-after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 50%;
-            overflow: hidden;
-        }
-        .ba-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: #06b6d4;
-            cursor: ew-resize;
-            box-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+        .text-glow {
+            text-shadow: 0 2px 10px rgba(34, 197, 94, 0.15);
         }
     </style>
 </head>
-<body class="font-sans antialiased relative min-h-screen overflow-x-hidden selection:bg-brand-500 selection:text-white">
+<body class="bg-gradient-to-br from-emerald-50/60 via-white to-emerald-100/50 text-slate-800 font-sans antialiased relative min-h-screen overflow-x-hidden">
 
-    <!-- Background Ambient Bubbles -->
-    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div class="bubble w-20 h-20 left-[10%]" style="animation-delay: 0s;"></div>
-        <div class="bubble w-32 h-32 left-[30%]" style="animation-delay: 3s;"></div>
-        <div class="bubble w-16 h-16 left-[55%]" style="animation-delay: 1s;"></div>
-        <div class="bubble w-24 h-24 left-[75%]" style="animation-delay: 4s;"></div>
-        <div class="bubble w-28 h-28 left-[90%]" style="animation-delay: 2s;"></div>
+    <!-- Latar Belakang Animasi Daun Teh Ketiup Angin -->
+    <div class="fixed inset-0 pointer-events-none z-[1] overflow-hidden" id="leaves-container">
+        <div class="tea-leaf text-2xl left-[8%]" style="animation-duration: 9s; animation-delay: 0s;"><i class="fa-solid fa-leaf"></i></div>
+        <div class="tea-leaf text-4xl left-[22%]" style="animation-duration: 12s; animation-delay: 2s;"><i class="fa-solid fa-leaf"></i></div>
+        <div class="tea-leaf text-xl left-[38%]" style="animation-duration: 8s; animation-delay: 4s;"><i class="fa-solid fa-leaf"></i></div>
+        <div class="tea-leaf text-3xl left-[55%]" style="animation-duration: 11s; animation-delay: 1s;"><i class="fa-solid fa-leaf"></i></div>
+        <div class="tea-leaf text-2xl left-[70%]" style="animation-duration: 14s; animation-delay: 3s;"><i class="fa-solid fa-leaf"></i></div>
+        <div class="tea-leaf text-3xl left-[85%]" style="animation-duration: 10s; animation-delay: 1.5s;"><i class="fa-solid fa-leaf"></i></div>
+        <div class="tea-leaf text-xl left-[93%]" style="animation-duration: 13s; animation-delay: 5s;"><i class="fa-solid fa-leaf"></i></div>
     </div>
 
     <!-- Navigation Bar -->
-    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- Logo -->
-            <a href="#home" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-accent text-white flex items-center justify-center text-xl shadow-blueGlow group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-soap"></i>
-                </div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-none">SUPERZY</span>
-                    <span class="text-[10px] text-brand-600 font-bold tracking-widest uppercase">LAUNDRY PLACE FK UIN</span>
-                </div>
-            </a>
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100 shadow-xs transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-all">
+                        <i class="fa-solid fa-leaf text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-black text-lg sm:text-xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">ES TEH SOLO</span>
+                        <span class="block text-[10px] font-bold text-emerald-700 -mt-1 tracking-wider uppercase">Outlet Buaran</span>
+                    </div>
+                </a>
 
-            <!-- Menu Navigation -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-700">
-                <a href="#home" class="hover:text-brand-600 transition-colors">Home</a>
-                <a href="#layanan" class="hover:text-brand-600 transition-colors">Layanan</a>
-                <a href="#portfolio" class="hover:text-brand-600 transition-colors">Portfolio</a>
-                <a href="#tentang" class="hover:text-brand-600 transition-colors">Tentang</a>
-                <a href="#kontak" class="hover:text-brand-600 transition-colors">Kontak</a>
-            </nav>
+                <div class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600">
+                    <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Keunggulan</a>
+                    <a href="#menu" class="hover:text-brand-600 transition-colors">Daftar Menu</a>
+                    <a href="#kalkulator" class="hover:text-brand-600 transition-colors">Kalkulator Pesanan</a>
+                    <a href="#lokasi" class="hover:text-brand-600 transition-colors">Lokasi Outlet</a>
+                </div>
 
-            <!-- CTA Button -->
-            <div class="hidden md:flex items-center gap-4">
-                <a href="#kontak" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-brand-accent text-white font-bold text-sm shadow-blueGlow hover:opacity-95 hover:shadow-lg transition-all flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Pesan Sekarang</span>
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20mau%20pesan%20es%20teh" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/30 hover:scale-105 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Pesan WhatsApp</span>
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-brand-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-emerald-100 px-4 pt-2 pb-6 space-y-3 shadow-xl">
+            <a href="#keunggulan" class="block py-2 text-slate-600 font-medium hover:text-brand-600 mobile-link">Keunggulan</a>
+            <a href="#menu" class="block py-2 text-slate-600 font-medium hover:text-brand-600 mobile-link">Daftar Menu</a>
+            <a href="#kalkulator" class="block py-2 text-slate-600 font-medium hover:text-brand-600 mobile-link">Kalkulator Pesanan</a>
+            <a href="#lokasi" class="block py-2 text-slate-600 font-medium hover:text-brand-600 mobile-link">Lokasi Outlet</a>
+            <div class="pt-2">
+                <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20mau%20pesan%20es%20teh" target="_blank" class="w-full flex justify-center items-center gap-2 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Pesan via WhatsApp</span>
                 </a>
             </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="menu-btn" class="md:hidden text-slate-800 text-2xl focus:outline-none">
-                <i class="fa-solid fa-bars" id="menu-icon"></i>
-            </button>
         </div>
+    </nav>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-card border-b border-brand-100 px-6 py-6 flex flex-col gap-4">
-            <a href="#home" class="mobile-link text-slate-800 font-bold py-2 border-b border-slate-200">Home</a>
-            <a href="#layanan" class="mobile-link text-slate-800 font-bold py-2 border-b border-slate-200">Layanan</a>
-            <a href="#portfolio" class="mobile-link text-slate-800 font-bold py-2 border-b border-slate-200">Portfolio</a>
-            <a href="#tentang" class="mobile-link text-slate-800 font-bold py-2 border-b border-slate-200">Tentang</a>
-            <a href="#kontak" class="mobile-link text-slate-800 font-bold py-2 border-b border-slate-200">Kontak</a>
-            <a href="#kontak" class="w-full mt-2 py-3 rounded-xl bg-brand-600 text-white font-bold text-center flex items-center justify-center gap-2 shadow-blueGlow">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>Hubungi Langsung</span>
-            </a>
-        </div>
-    </header>
-
-    <!-- Home / Hero Section -->
-    <section id="home" class="pt-32 pb-16 md:pt-44 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Hero Left Text -->
-            <div class="lg:col-span-7 space-y-6 text-left">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-brand-200 text-brand-700 text-xs font-extrabold shadow-sm backdrop-blur-md">
-                    <span class="w-2.5 h-2.5 rounded-full bg-brand-accent animate-ping"></span>
-                    LAUNDRY HIGIENIS & EXPRESS DEKAT FK UIN
-                </div>
-
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.18]">
-                    Layanan Laundry Premium & Terpercaya di Sekitar <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-accent">FK UIN Jakarta</span>
-                </h1>
-
-                <p class="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
-                    Pakaian bersih, wangi, higienis, dan selesai tepat waktu. Dikerjakan dengan peralatan modern, air multi-filtrasi, dan standar kebersihan tertinggi khusus untuk mahasiswa, dosen, dan warga Cireundeu.
-                </p>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20mau%20order%20laundry%20antar-jemput" target="_blank" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-brand-accent text-white font-bold text-base shadow-blueGlow hover:opacity-95 transition-all flex items-center justify-center gap-3">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                        <span>Hubungi WhatsApp</span>
-                    </a>
-                    <a href="#kontak" class="px-8 py-4 rounded-xl bg-white/80 hover:bg-white text-brand-700 font-bold text-base border border-brand-200 shadow-sm backdrop-blur-md transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-map-location-dot text-brand-500"></i>
-                        <span>Lihat Lokasi Maps</span>
-                    </a>
-                </div>
-
-                <!-- Live Status Badge -->
-                <div class="pt-4 flex items-center gap-6 text-xs text-slate-600 font-semibold">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-brand-600 text-base"></i>
-                        <span>1 Mesin 1 Nota (Tidak Dicampur)</span>
+    <!-- Hero Section -->
+    <section class="relative z-10 pt-10 pb-20 lg:pt-16 lg:pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Teks Utama -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200 shadow-xs">
+                            <i class="fa-solid fa-star text-amber-500"></i>
+                            <span>Cita Rasa Autentik Solo</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 shadow-xs">
+                            <i class="fa-solid fa-leaf text-brand-600"></i>
+                            <span>100% Teh Pilihan Alami</span>
+                        </span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-truck-fast text-brand-600 text-base"></i>
-                        <span>Free Delivery Area FK UIN</span>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight text-glow">
+                        Segar, Autentik & Nikmat <br class="hidden sm:block"/>
+                        <span class="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">
+                            Es Teh Solo Buaran
+                        </span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Es Teh Solo menyajikan minuman teh segar berkualitas dengan cita rasa autentik dan harga terjangkau. Menggunakan daun teh pilihan, kami menghadirkan Es Teh Original serta berbagai varian rasa yang cocok dinikmati kapan saja. Cocok untuk menemani makan, bekerja, berkumpul bersama keluarga, maupun acara lainnya. Jika Anda mencari es teh enak, minuman teh kekinian, es teh segar, atau es teh terdekat, Es Teh Solo siap menjadi pilihan terbaik. Kami mengutamakan kualitas, kebersihan, dan pelayanan yang ramah agar setiap pelanggan mendapatkan pengalaman menikmati teh yang menyegarkan di setiap tegukan.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20mau%20pesan" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-base shadow-xl shadow-brand-600/30 hover:scale-[1.02] transition-all">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Pesan Sekarang</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/ZpHni1vUjrHed2nz5" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl glass-card hover:bg-white text-slate-700 font-semibold shadow-md hover:scale-[1.02] transition-all">
+                            <i class="fa-solid fa-location-dot text-rose-500 text-lg"></i>
+                            <span>Petunjuk Lokasi Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-4 grid grid-cols-3 gap-2 text-left text-xs sm:text-sm font-semibold text-slate-600 max-w-md mx-auto lg:mx-0">
+                        <div class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-500"></i> Manis Pas Alami</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Harga Terjangkau</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Bersih & Higienis</div>
                     </div>
                 </div>
+
+                <!-- Animasi Gelas Es Teh Jumbo -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="relative w-72 h-[400px] sm:w-80 sm:h-[440px] bg-gradient-to-b from-emerald-100/90 via-white to-emerald-50 rounded-3xl p-6 border-4 border-white shadow-2xl shadow-brand-500/20 flex flex-col justify-between items-center">
+                        
+                        <div class="w-full flex items-center justify-between bg-emerald-50 p-2.5 rounded-2xl border border-emerald-200">
+                            <span class="text-xs font-black text-brand-700 uppercase tracking-wider px-2"><i class="fa-solid fa-whiskey-glass text-brand-600 mr-1.5"></i> Fresh Cold Brew</span>
+                            <span class="w-3 h-3 rounded-full bg-brand-500 animate-ping"></span>
+                        </div>
+
+                        <!-- Wadah Gelas Es Teh -->
+                        <div class="relative w-52 h-72 sm:w-60 sm:h-80 bg-gradient-to-b from-amber-700 via-amber-800 to-amber-950 rounded-b-3xl rounded-t-lg border-4 border-white/90 shadow-2xl overflow-hidden flex flex-col justify-end items-center">
+                            
+                            <!-- Sedotan Hijau -->
+                            <div class="absolute -top-12 right-12 w-4 h-56 bg-gradient-to-b from-brand-400 to-brand-600 rounded-full transform rotate-12 z-30 border border-white/60 shadow-md"></div>
+
+                            <!-- Efek Uap Dingin Melayang -->
+                            <div class="absolute -top-4 left-10 w-4 h-4 rounded-full bg-white/40 blur-xs animate-steam z-20"></div>
+                            <div class="absolute -top-6 right-16 w-6 h-6 rounded-full bg-white/30 blur-xs animate-steam z-20" style="animation-delay: 1s;"></div>
+
+                            <!-- Es Batu Melayang di Dalam Gelas -->
+                            <div class="absolute inset-0 z-10 pointer-events-none">
+                                <div class="w-11 h-11 bg-white/45 backdrop-blur-xs rounded-xl border border-white/80 absolute top-12 left-6 shadow-sm animate-ice-1"></div>
+                                <div class="w-14 h-14 bg-white/40 backdrop-blur-xs rounded-xl border border-white/80 absolute top-24 right-6 shadow-sm animate-ice-2"></div>
+                                <div class="w-10 h-10 bg-white/45 backdrop-blur-xs rounded-xl border border-white/80 absolute top-36 left-16 shadow-sm animate-ice-3"></div>
+                            </div>
+
+                            <!-- Cairan Teh Bergelombang -->
+                            <div class="w-full h-4/5 bg-gradient-to-t from-amber-950 via-amber-800 to-amber-600/95 animate-wave-tea rounded-b-2xl relative">
+                                <!-- Bintik Embun Gelas -->
+                                <div class="w-2 h-2 rounded-full bg-white/60 absolute top-8 left-4"></div>
+                                <div class="w-1.5 h-1.5 rounded-full bg-white/50 absolute top-16 right-5"></div>
+                                <div class="w-2 h-2 rounded-full bg-white/70 absolute top-24 left-8"></div>
+                            </div>
+
+                            <!-- Logo Stiker Cup -->
+                            <div class="absolute top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full border-2 border-emerald-200 shadow-xl text-center">
+                                <p class="text-xs font-black text-brand-700 uppercase tracking-widest">Es Teh Solo</p>
+                                <p class="text-[9px] font-bold text-slate-500">Buaran Tangsel</p>
+                            </div>
+
+                            <!-- Kilatan Cahaya Kaca Gelas -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-white/35 pointer-events-none rounded-b-2xl"></div>
+                        </div>
+
+                        <div class="w-full text-center text-slate-500 text-[11px] font-bold">
+                            <i class="fa-solid fa-leaf text-brand-500 mr-1"></i> Rasa Otentik Pekat & Fresh
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section id="keunggulan" class="py-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-black text-brand-600 uppercase tracking-widest mb-1">Keunggulan</h2>
+                <p class="text-2xl sm:text-3xl font-black text-slate-900">Alasan Es Teh Solo Buaran Selalu Dicari</p>
             </div>
 
-            <!-- Hero Right Interactive Clothes Counter Box -->
-            <div class="lg:col-span-5">
-                <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-glass border border-white relative space-y-6">
-                    <div class="flex items-center justify-between pb-4 border-b border-brand-100">
-                        <div>
-                            <h3 class="font-extrabold text-slate-900 text-lg">Estimasi Jumlah Pakaian</h3>
-                            <p class="text-xs text-slate-500">Hitung perkiraan item Anda sebelum dikirim</p>
-                        </div>
-                        <span class="px-3 py-1 bg-brand-100 text-brand-700 font-bold text-xs rounded-full">Simulator Item</span>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-xl mb-4 shadow-xs border border-brand-500/10">
+                        <i class="fa-solid fa-leaf"></i>
                     </div>
+                    <h3 class="font-extrabold text-base text-slate-900 mb-1.5">Seduhan Teh Asli</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Racikan daun teh melati murni dengan aroma khas Solo yang kental dan tidak pekat pahit.</p>
+                </div>
 
-                    <!-- Interactive Item Counters -->
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between bg-white/70 p-3.5 rounded-2xl border border-brand-100">
-                            <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-shirt text-brand-500"></i> Kemeja / Kaos / Celana
-                            </span>
-                            <div class="flex items-center gap-3">
-                                <button onclick="changeCount('shirts', -1)" class="w-7 h-7 rounded-lg bg-brand-100 text-brand-700 font-bold">-</button>
-                                <span id="count-shirts" class="text-sm font-extrabold text-slate-900 min-w-[20px] text-center">5</span>
-                                <button onclick="changeCount('shirts', 1)" class="w-7 h-7 rounded-lg bg-brand-600 text-white font-bold">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between bg-white/70 p-3.5 rounded-2xl border border-brand-100">
-                            <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-user-doctor text-brand-500"></i> Jas Dokter / Snelli / Almamater
-                            </span>
-                            <div class="flex items-center gap-3">
-                                <button onclick="changeCount('coats', -1)" class="w-7 h-7 rounded-lg bg-brand-100 text-brand-700 font-bold">-</button>
-                                <span id="count-coats" class="text-sm font-extrabold text-slate-900 min-w-[20px] text-center">1</span>
-                                <button onclick="changeCount('coats', 1)" class="w-7 h-7 rounded-lg bg-brand-600 text-white font-bold">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between bg-white/70 p-3.5 rounded-2xl border border-brand-100">
-                            <span class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-shoe-prints text-brand-500"></i> Sepatu / Tas
-                            </span>
-                            <div class="flex items-center gap-3">
-                                <button onclick="changeCount('shoes', -1)" class="w-7 h-7 rounded-lg bg-brand-100 text-brand-700 font-bold">-</button>
-                                <span id="count-shoes" class="text-sm font-extrabold text-slate-900 min-w-[20px] text-center">1</span>
-                                <button onclick="changeCount('shoes', 1)" class="w-7 h-7 rounded-lg bg-brand-600 text-white font-bold">+</button>
-                            </div>
-                        </div>
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-xl mb-4 shadow-xs border border-brand-500/10">
+                        <i class="fa-solid fa-candy-cane"></i>
                     </div>
+                    <h3 class="font-extrabold text-base text-slate-900 mb-1.5">Gula Murni Alami</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Menggunakan gula pasir murni tanpa bahan pemanis buatan sehingga tidak membuat tenggorokan gatal.</p>
+                </div>
 
-                    <div class="bg-gradient-to-r from-brand-600 to-brand-accent p-4 rounded-2xl text-white flex items-center justify-between">
-                        <div>
-                            <p class="text-[11px] font-medium opacity-90">Estimasi Total Berat & Item:</p>
-                            <p id="estimated-weight" class="text-base font-extrabold">± 2.5 Kg + 2 Satuan</p>
-                        </div>
-                        <button onclick="sendEstimatedOrder()" class="px-4 py-2 bg-white text-brand-700 font-bold text-xs rounded-xl shadow-md hover:bg-brand-50 transition-all">
-                            Kirim Detail WA <i class="fa-solid fa-paper-plane ml-1"></i>
-                        </button>
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-xl mb-4 shadow-xs border border-brand-500/10">
+                        <i class="fa-solid fa-coins"></i>
                     </div>
+                    <h3 class="font-extrabold text-base text-slate-900 mb-1.5">Harga Sangat Murah</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Minuman teh berkualitas resto dengan harga serba terjangkau mulai dari Rp 3.000 saja.</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-xl mb-4 shadow-xs border border-brand-500/10">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="font-extrabold text-base text-slate-900 mb-1.5">Higienis & Ramah</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">Proses penyajian cepat, mengutamakan kebersihan tempat, serta pelayanan ramah senyum.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Layanan Section (Informational Only - NO PRICES) -->
-    <section id="layanan" class="py-20 relative">
+    <!-- Daftar Menu Section -->
+    <section id="menu" class="py-16 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-xs font-extrabold text-brand-600 uppercase tracking-widest bg-white/80 px-4 py-1.5 rounded-full border border-brand-200">LAYANAN LENGKAP KAMI</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Solusi Perawatan Pakaian Profesional</h2>
-                <p class="text-slate-600 mt-3 text-sm sm:text-base">Seluruh proses pencucian menggunakan teknologi modern, deterjen ramah serat kain, antiseptik tingkat tinggi, dan penanganan terpisah per pelanggan.</p>
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-black text-brand-600 uppercase tracking-widest mb-1">Daftar Menu</h2>
+                <p class="text-2xl sm:text-3xl font-black text-slate-900">Pilihan Varian Minuman Segar</p>
             </div>
 
-            <!-- Service Category Filter Tabs -->
-            <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
-                <button onclick="filterService('all')" class="svc-tab active-tab px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-600 text-white shadow-blueGlow transition-all">Semua Layanan</button>
-                <button onclick="filterService('kiloan')" class="svc-tab px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white/80 text-slate-700 border border-brand-200 hover:bg-white transition-all">Cuci Kiloan</button>
-                <button onclick="filterService('satuan')" class="svc-tab px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white/80 text-slate-700 border border-brand-200 hover:bg-white transition-all">Cuci Satuan & Jas</button>
-                <button onclick="filterService('sepatu')" class="svc-tab px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white/80 text-slate-700 border border-brand-200 hover:bg-white transition-all">Sepatu & Tas</button>
-                <button onclick="filterService('antarjemput')" class="svc-tab px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white/80 text-slate-700 border border-brand-200 hover:bg-white transition-all">Antar-Jemput Gratis</button>
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Menu 1 -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl border border-white hover:shadow-2xl transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-brand-100 text-brand-700 font-bold text-[11px] rounded-full">Menu Utama</span>
+                            <i class="fa-solid fa-glass-water text-brand-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-extrabold text-lg text-slate-900 mb-1">Es Teh Solo Original</h3>
+                        <p class="text-slate-500 text-xs mb-3">Teh manis racikan khas Solo dengan es segar</p>
+                        <div class="text-brand-600 font-black text-2xl mb-4">
+                            Rp 3.000 <span class="text-xs font-normal text-slate-500">/ cup jumbo</span>
+                        </div>
+                        <ul class="text-xs text-slate-600 space-y-2.5 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Seduhan daun teh melati segar</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> 100% Gula pasir murni</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Ukuran cup besar memuaskan</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20mau%20order%20Es%20Teh%20Solo%20Original" target="_blank" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-brand-600 text-white font-bold text-xs text-center shadow-md transition-all">
+                        Pesan Original
+                    </a>
+                </div>
+
+                <!-- Menu 2 -->
+                <div class="glass-card rounded-2xl p-6 shadow-2xl border-2 border-brand-400 relative flex flex-col justify-between transform hover:-translate-y-1 transition-all">
+                    <div class="absolute -top-3.5 right-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white px-3.5 py-1 rounded-full text-[10px] font-black tracking-wider uppercase shadow-md">
+                        Paling Laris
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-[11px] rounded-full">Varian Rasa Buah</span>
+                            <i class="fa-solid fa-lemon text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="font-extrabold text-lg text-slate-900 mb-1">Es Lemon Tea / Lychee Tea</h3>
+                        <p class="text-slate-500 text-xs mb-3">Teh segar dipadu ekstrak rasa buah-buahan</p>
+                        <div class="text-brand-600 font-black text-2xl mb-4">
+                            Rp 5.000 <span class="text-xs font-normal text-slate-500">/ cup jumbo</span>
+                        </div>
+                        <ul class="text-xs text-slate-600 space-y-2.5 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Kombinasi asam manis menyegarkan</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Pilihan favorit saat cuaca panas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Aroma buah yang harum alami</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20mau%20order%20Es%20Teh%20Varian%20Rasa" target="_blank" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs text-center shadow-lg shadow-brand-600/30 transition-all">
+                        Pesan Varian Rasa
+                    </a>
+                </div>
+
+                <!-- Menu 3 -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl border border-white hover:shadow-2xl transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-[11px] rounded-full">Spesial Creamy</span>
+                            <i class="fa-solid fa-bottle-droplet text-emerald-600 text-xl"></i>
+                        </div>
+                        <h3 class="font-extrabold text-lg text-slate-900 mb-1">Es Milk Tea / Teh Tarik</h3>
+                        <p class="text-slate-500 text-xs mb-3">Racikan teh kental dipadu susu manis gurih</p>
+                        <div class="text-brand-600 font-black text-2xl mb-4">
+                            Rp 7.000 <span class="text-xs font-normal text-slate-500">/ cup jumbo</span>
+                        </div>
+                        <ul class="text-xs text-slate-600 space-y-2.5 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Tekstur lembut dan manis legit</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Cocok untuk teman santai / kerja</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-600 font-bold"></i> Kualitas rasa kedai kekinian</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20mau%20order%20Milk%20Tea" target="_blank" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-brand-600 text-white font-bold text-xs text-center shadow-md transition-all">
+                        Pesan Milk Tea
+                    </a>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Service Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Service 1: Kiloan -->
-                <div class="svc-card kiloan glass-card glass-card-hover rounded-3xl p-8 border border-white flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-2xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-weight-hanging"></i>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">Cuci Kiloan Reguler & Express</h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                            Layanan cuci lipat/setrika harian untuk pakaian harian mahasiswa & keluarga. Proses pemisahan warna dan pengeringan 100% tuntas.
-                        </p>
-                        <ul class="space-y-2.5 text-xs text-slate-700 font-semibold mb-6">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Deterjen Antibakteri & Antiseptik</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Setrika Uap Licin Rapi</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Pilihan Parfum Premium Grade A</li>
-                        </ul>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-brand-600"><i class="fa-regular fa-clock mr-1"></i> Estimasi: 1 - 2 Hari / Express 6 Jam</span>
-                        <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20mau%20tanya%20layanan%20Cuci%20Kiloan" target="_blank" class="text-xs font-extrabold text-brand-700 hover:text-brand-500">Detail Info <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+    <!-- Kalkulator Pesanan Section -->
+    <section id="kalkulator" class="py-16 relative z-10">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-white">
+                <div class="text-center mb-6">
+                    <span class="px-3.5 py-1 bg-brand-100 text-brand-700 text-[11px] font-black rounded-full uppercase tracking-wider">Kalkulator Ringkas</span>
+                    <h2 class="text-2xl font-black text-slate-900 mt-2">Hitung Perkiraan Biaya Pesanan</h2>
                 </div>
 
-                <!-- Service 2: Satuan Jas & Snelli Dokter -->
-                <div class="svc-card satuan glass-card glass-card-hover rounded-3xl p-8 border border-white flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-2xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-user-doctor"></i>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">Jas, Snelli Dokter & Kebaya</h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                            Perawatan khusus pakaian formal, jas almamater, gaun, dan jas laboratorium kedokteran (Snelli FK UIN) agar warna tetap cemerlang tanpa merusak bahan.
-                        </p>
-                        <ul class="space-y-2.5 text-xs text-slate-700 font-semibold mb-6">
-                            <li class="flex items-center gap-2"><li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Dry Cleaning / Gentle Handwash</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Pemutih Khusus Snelli Anti-Kuning</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Gratis Hanger & Cover Pelindung</li>
-                        </ul>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-brand-600"><i class="fa-regular fa-clock mr-1"></i> Perawatan Khusus Hati-hati</span>
-                        <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20mau%20tanya%20layanan%20Cuci%20Jas/Snelli" target="_blank" class="text-xs font-extrabold text-brand-700 hover:text-brand-500">Detail Info <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 3: Sepatu & Tas -->
-                <div class="svc-card sepatu glass-card glass-card-hover rounded-3xl p-8 border border-white flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-2xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-shoe-prints"></i>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">Deep Cleaning Sepatu & Tas</h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                            Pembersihan menyeluruh untuk sneakers, sepatu kulit, flatshoes, hingga ransel kuliah. Menghilangkan noda membandel dan bau tidak sedap.
-                        </p>
-                        <ul class="space-y-2.5 text-xs text-slate-700 font-semibold mb-6">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Treatment Anti-Jamur & Odor Removal</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Sikat Khusus Suede, Canvas, Leather</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Pengeringan Alami Tanpa Merusak Sol</li>
-                        </ul>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-brand-600"><i class="fa-regular fa-clock mr-1"></i> Hasil Bersih Luar Dalam</span>
-                        <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20mau%20tanya%20layanan%20Cuci%20Sepatu" target="_blank" class="text-xs font-extrabold text-brand-700 hover:text-brand-500">Detail Info <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 4: Bedcover -->
-                <div class="svc-card kiloan glass-card glass-card-hover rounded-3xl p-8 border border-white flex flex-col justify-between">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-2xl mb-6 shadow-sm">
-                            <i class="fa-solid fa-bed"></i>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-slate-900 mb-2">Bedcover, Selimut & Sprei</h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
-                            Pencucian perlengkapan tidur dengan mesin kapasitas besar. Menghilangkan tungau, debu halus, serta mengembalikan kelembutan selimut.
-                        </p>
-                        <ul class="space-y-2.5 text-xs text-slate-700 font-semibold mb-6">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Pembasmi Tungau & Bakteri Bedding</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Pelembut Kain Extra Comfort</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-500"></i> Kemasan Press Rapih Steril</li>
-                        </ul>
-                    </div>
-                    <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
-                        <span class="text-xs font-bold text-brand-600"><i class="fa-regular fa-clock mr-1"></i> Wangi & Nyaman Dipakai</span>
-                        <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20mau%20tanya%20layanan%20Bedcover" target="_blank" class="text-xs font-extrabold text-brand-700 hover:text-brand-500">Detail Info <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 5: Antar-Jemput -->
-                <div class="svc-card antarjemput glass-card glass-card-hover rounded-3xl p-8 border border-white flex flex-col justify-between md:col-span-2 lg:col-span-2 bg-gradient-to-br from-white/90 to-brand-50/80">
-                    <div class="flex flex-col md:flex-row items-center gap-6">
-                        <div class="w-20 h-20 rounded-3xl bg-brand-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-blueGlow">
-                            <i class="fa-solid fa-truck-ramp-box"></i>
-                        </div>
+                <div class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-5">
                         <div>
-                            <span class="px-3 py-1 bg-brand-100 text-brand-700 font-extrabold text-xs rounded-full">GRATIS ANTAR-JEMPUT</span>
-                            <h3 class="text-2xl font-extrabold text-slate-900 mt-2">Layanan Antar-Jemput Langsung ke Kost / Rumah</h3>
-                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mt-2">
-                                Khusus untuk mahasiswa FK UIN, area Cireundeu, dan Ciputat. Tim kurir kami siap menjemput pakaian kotor di depan kamar kost Anda dan mengembalikannya dalam keadaan bersih dan harum.
-                            </p>
+                            <label class="block text-xs font-bold uppercase text-slate-500 mb-2">Pilih Varian Teh</label>
+                            <select id="calc-service" class="w-full p-3.5 bg-white/90 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none text-sm font-semibold text-slate-700 shadow-inner">
+                                <option value="3000" data-name="Es Teh Solo Original">Es Teh Solo Original (Rp 3.000/cup)</option>
+                                <option value="5000" data-name="Es Lemon / Lychee Tea">Es Lemon / Lychee Tea (Rp 5.000/cup)</option>
+                                <option value="7000" data-name="Es Milk Tea / Teh Tarik">Es Milk Tea / Teh Tarik (Rp 7.000/cup)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold uppercase text-slate-500">Jumlah Cup / Porsi</label>
+                                <span id="calc-weight-val" class="text-sm font-extrabold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-md border border-brand-200">5 Cup</span>
+                            </div>
+                            <input type="range" id="calc-weight" min="1" max="50" value="5" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-600 shadow-inner">
+                            <div class="flex justify-between text-[10px] text-slate-400 font-semibold mt-1.5">
+                                <span>1 Cup</span>
+                                <span>25 Cup</span>
+                                <span>50 Cup</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="pt-6 mt-6 border-t border-brand-100 flex flex-wrap items-center justify-between gap-4">
-                        <span class="text-xs font-bold text-slate-700"><i class="fa-solid fa-location-dot text-brand-600 mr-1"></i> Area Cangkupan: FK UIN, Cireundeu, Pisangan, Ciputat</span>
-                        <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20mau%20request%20Antar%20Jemput%20Laundry" target="_blank" class="px-6 py-2.5 rounded-xl bg-brand-600 text-white font-bold text-xs shadow-blueGlow hover:bg-brand-700 transition-all">
-                            Request Jemput Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
+
+                    <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 text-white p-6 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-brand-400/30">
+                        <div>
+                            <p class="text-xs font-bold text-brand-100 uppercase tracking-wider">Estimasi Total Biaya</p>
+                            <p id="calc-total" class="text-3xl font-black mt-0.5 tracking-tight">Rp 15.000</p>
+                            <p id="calc-detail-text" class="text-xs text-brand-100 mt-1 font-medium">Es Teh Solo Original (5 Cup)</p>
+                        </div>
+                        <a id="calc-wa-btn" href="#" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-emerald-50 text-brand-700 text-xs font-extrabold rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-105 whitespace-nowrap">
+                            <i class="fa-brands fa-whatsapp text-xl text-emerald-600"></i>
+                            <span>Pesan Sesuai Estimasi Ini</span>
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section (Interactive Before-After Tester Showcase) -->
-    <section id="portfolio" class="py-20 relative bg-white/40 border-y border-white">
+    <!-- Lokasi & Peta Section -->
+    <section id="lokasi" class="py-16 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-extrabold text-brand-600 uppercase tracking-widest bg-white px-4 py-1.5 rounded-full border border-brand-200">PORTFOLIO & TESTER HASIL</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Uji Kualitas Kebersihan Real</h2>
-                <p class="text-slate-600 mt-3 text-sm sm:text-base">Geser slider di bawah ini untuk melihat perbandingan asli kondisi sebelum dan sesudah penanganan di Superzy Laundry.</p>
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-xs font-black text-brand-600 uppercase tracking-widest mb-1">Lokasi Outlet</h2>
+                <p class="text-2xl sm:text-3xl font-black text-slate-900">Kunjungi Outlet Es Teh Solo Buaran</p>
+                <p class="text-xs sm:text-sm text-slate-600 mt-2 font-medium">Jl. Masjid Buaran RT 002 / RW 003 Tangerang Selatan, Banten 15310</p>
             </div>
 
-            <!-- Interactive Before / After Image Slider Tester -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-                
-                <!-- Left Slider Display -->
-                <div class="lg:col-span-7">
-                    <div class="glass-card rounded-3xl p-4 sm:p-6 border border-white shadow-glass">
-                        <div class="flex items-center justify-between mb-4 px-2">
-                            <span class="text-xs font-extrabold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-sliders text-brand-600"></i> Interactive Before-After Tester
-                            </span>
-                            <span class="text-xs text-brand-600 font-bold">Geser Ke Kiri / Kanan <i class="fa-solid fa-arrows-left-right ml-1"></i></span>
-                        </div>
-
-                        <!-- Slider Wrapper -->
-                        <div id="ba-slider" class="ba-container w-full h-[320px] sm:h-[400px] rounded-2xl shadow-inner bg-slate-200">
-                            <!-- BEFORE Image Mockup -->
-                            <div class="absolute inset-0 bg-slate-800 text-white flex flex-col items-center justify-center p-8 text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(15,23,42,0.7), rgba(15,23,42,0.7)), url('https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=800&q=80');">
-                                <span class="px-3 py-1 bg-red-500/90 text-white font-extrabold text-xs rounded-lg mb-2">SEBELUM (Kotor / Noda Nempel)</span>
-                                <p class="text-sm font-semibold max-w-xs text-slate-200">Jas Lab / Snelli Dokter FK UIN Terkena Noda Bahan Kimia & Debu Lapangan</p>
-                            </div>
-
-                            <!-- AFTER Image Overlay -->
-                            <div id="ba-after" class="ba-after bg-brand-600 text-white flex flex-col items-center justify-center p-8 text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(2,132,199,0.75), rgba(6,182,212,0.75)), url('https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=80');">
-                                <span class="px-3 py-1 bg-emerald-500 text-slate-950 font-extrabold text-xs rounded-lg mb-2">SESUDAH (Hasil Superzy)</span>
-                                <p class="text-sm font-bold max-w-xs text-white">Bersih Cemerlang, Bebas Noda, Steril, & Wangi Parfum Anti-Apek</p>
-                            </div>
-
-                            <!-- Draggable Handle Bar -->
-                            <div id="ba-handle" class="ba-handle flex items-center justify-center">
-                                <div class="w-8 h-8 rounded-full bg-white text-brand-600 shadow-md flex items-center justify-center text-xs font-black">
-                                    <i class="fa-solid fa-code-compare"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Tester Quality Check Log -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="glass-card rounded-3xl p-6 border border-white shadow-sm space-y-4">
-                        <h3 class="text-lg font-extrabold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-vial-circle-check text-brand-600"></i> Standard Quality Tester Logs
-                        </h3>
-                        
-                        <!-- Log Item 1 -->
-                        <div class="p-3.5 bg-white/80 rounded-2xl border border-brand-100 flex items-start gap-3">
-                            <i class="fa-solid fa-droplet text-brand-500 text-lg mt-0.5"></i>
-                            <div>
-                                <h4 class="text-xs font-extrabold text-slate-900">Uji Ketahanan Parfum Premium</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Dapat bertahan hingga 14 hari simpan di lemari tanpa bau apek.</p>
-                            </div>
-                        </div>
-
-                        <!-- Log Item 2 -->
-                        <div class="p-3.5 bg-white/80 rounded-2xl border border-brand-100 flex items-start gap-3">
-                            <i class="fa-solid fa-bacteria text-brand-500 text-lg mt-0.5"></i>
-                            <div>
-                                <h4 class="text-xs font-extrabold text-slate-900">100% Antiseptik & Anti Tungau</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Proses bilasan menggunakan formula disinfektan aman untuk kulit sensitif.</p>
-                            </div>
-                        </div>
-
-                        <!-- Log Item 3 -->
-                        <div class="p-3.5 bg-white/80 rounded-2xl border border-brand-100 flex items-start gap-3">
-                            <i class="fa-solid fa-user-check text-brand-500 text-lg mt-0.5"></i>
-                            <div>
-                                <h4 class="text-xs font-extrabold text-slate-900">Inspeksi Finishing & Lipatan</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Pemeriksaan ulang jumlah kancing, kerapihan kerah, dan keutuhan item.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Tentang Section (About Us) -->
-    <section id="tentang" class="py-20 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Story -->
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="text-xs font-extrabold text-brand-600 uppercase tracking-widest bg-white px-4 py-1.5 rounded-full border border-brand-200">TENTANG SUPERZY</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Sahabat Setia Kebersihan Pakaian Mahasiswa & Civitas UIN</h2>
-                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Berdiri persis di sekitar area strategis **Fakultas Kedokteran UIN Jakarta (Jl. Inpres Cireundeu)**, Superzy Laundry Place hadir memahami kesibukan akademik dan aktivitas harian Anda.
-                    </p>
-                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                        Kami berkomitmen menghadirkan standar pencucian higienis tinggi dengan memadukan **air tersaring multi-filtrasi, sterilisasi disinfektan, serta parfum pilihan grade premium** agar pakaian Anda selalu tampil bersih dan segar.
-                    </p>
-
-                    <div class="grid grid-cols-2 gap-4 pt-2">
-                        <div class="glass-card p-4 rounded-2xl border border-white text-center">
-                            <span class="text-2xl sm:text-3xl font-extrabold text-brand-600">10.000+</span>
-                            <p class="text-xs font-bold text-slate-600 mt-1">Pakaian Terharumkan</p>
-                        </div>
-                        <div class="glass-card p-4 rounded-2xl border border-white text-center">
-                            <span class="text-2xl sm:text-3xl font-extrabold text-brand-600">500+</span>
-                            <p class="text-xs font-bold text-slate-600 mt-1">Pelanggan Setia FK UIN</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Guarantee Badges Cards -->
-                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="glass-card p-6 rounded-3xl border border-white space-y-3">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-water"></i>
-                        </div>
-                        <h4 class="font-extrabold text-slate-900 text-base">Air Multi-Filtrasi</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">Air dicuci melalui tahap pemfilteran agar bebas zat kapur dan tanah, menjaga warna baju tidak kusam.</p>
-                    </div>
-
-                    <div class="glass-card p-6 rounded-3xl border border-white space-y-3">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-rotate-left"></i>
-                        </div>
-                        <h4 class="font-extrabold text-slate-900 text-base">Garansi Cuci Ulang</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">Jika hasil cuci kurang wangi atau kurang rapi, kami siap mencuci & menyetrika ulang secara gratis.</p>
-                    </div>
-
-                    <div class="glass-card p-6 rounded-3xl border border-white space-y-3">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-tag"></i>
-                        </div>
-                        <h4 class="font-extrabold text-slate-900 text-base">Sistem Label Nota QR</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">Pencatatan item modern & rapi sehingga risiko pakaian hilang atau tertukar mendekati nol.</p>
-                    </div>
-
-                    <div class="glass-card p-6 rounded-3xl border border-white space-y-3">
-                        <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl font-bold">
-                            <i class="fa-solid fa-spray-can-sparkles"></i>
-                        </div>
-                        <h4 class="font-extrabold text-slate-900 text-base">Parfum Non-Alkohol</h4>
-                        <p class="text-xs text-slate-600 leading-relaxed">Aroma harum segar mewah yang aman untuk semua jenis serat kain halus dan kulit sensitif.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Kontak Section (Embed Maps & Direct WhatsApp Chat Trigger) -->
-    <section id="kontak" class="py-20 relative bg-white/50 border-t border-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-xs font-extrabold text-brand-600 uppercase tracking-widest bg-white px-4 py-1.5 rounded-full border border-brand-200">KONTAK & LOKASI MAPS</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4">Kunjungi Outlet / Hubungi Kami</h2>
-                <p class="text-slate-600 mt-3 text-sm sm:text-base">Punya pertanyaan atau ingin minta penjemputan laundry? Kirim pesan langsung ke WhatsApp kami di bawah ini.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- Left Info & Direct WA Form -->
-                <div class="lg:col-span-6 space-y-6">
-                    <!-- Info Box -->
-                    <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white space-y-6">
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Informasi Kontak -->
+                <div class="lg:col-span-5 flex flex-col justify-between glass-card rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="space-y-6">
                         <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 text-xl font-bold">
-                                <i class="fa-solid fa-location-dot"></i>
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+                                <i class="fa-solid fa-map-pin"></i>
                             </div>
                             <div>
-                                <h4 class="font-extrabold text-slate-900 text-base">Alamat Superzy Laundry Place</h4>
-                                <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                                    Jl. Inpres No.43 B, RT.5/RW.9, Cireundeu, Kec. Ciputat Timur, Kota Tangerang Selatan, Banten 15419 (Dekat FK UIN Jakarta)
+                                <h4 class="font-extrabold text-slate-900 text-sm">Alamat Toko</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed mt-1">
+                                    Jl. Masjid Buaran RT 002 / RW 003, Buaran, Kec. Serpong, Kota Tangerang Selatan, Banten 15310
                                 </p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 pt-4 border-t border-brand-100">
-                            <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center shrink-0 text-xl font-bold">
-                                <i class="fa-regular fa-clock"></i>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+                                <i class="fa-solid fa-clock"></i>
                             </div>
                             <div>
-                                <h4 class="font-extrabold text-slate-900 text-base">Jam Operasional</h4>
-                                <p class="text-xs sm:text-sm text-brand-600 font-extrabold mt-0.5">Senin - Minggu: 07.00 - 23.00 WIB</p>
+                                <h4 class="font-extrabold text-slate-900 text-sm">Jam Operasional</h4>
+                                <p class="text-xs text-slate-600 mt-1">
+                                    Buka Setiap Hari: <span class="font-bold text-slate-800">09.00 – 21.00 WIB</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-slate-900 text-sm">Pemesanan WhatsApp</h4>
+                                <p class="text-xs text-slate-600 mt-1 font-semibold">0851-6159-7865</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Direct WA Form -->
-                    <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white space-y-4">
-                        <h4 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-emerald-500 text-xl"></i> Form Order & Jemput Laundry
-                        </h4>
-                        <form id="wa-order-form" class="space-y-3.5">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap:</label>
-                                <input type="text" id="wa-name" placeholder="Contoh: Budi (Mahasiswa FK UIN)" required class="w-full bg-white/80 border border-brand-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-500">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1">Layanan yang Dibutuhkan:</label>
-                                <select id="wa-service" class="w-full bg-white/80 border border-brand-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-500">
-                                    <option value="Cuci Kiloan Reguler / Express">Cuci Kiloan Reguler / Express</option>
-                                    <option value="Cuci Jas Dokter / Snelli / Almamater">Cuci Jas Dokter / Snelli / Almamater</option>
-                                    <option value="Deep Cleaning Sepatu / Tas">Deep Cleaning Sepatu / Tas</option>
-                                    <option value="Cuci Bedcover & Selimut">Cuci Bedcover & Selimut</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1">Alamat Penjemputan / Catatan:</label>
-                                <textarea id="wa-address" rows="2" placeholder="Nama Kost / No Kamar / Patokan Alamat" required class="w-full bg-white/80 border border-brand-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-brand-500"></textarea>
-                            </div>
-                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-extrabold text-xs shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-whatsapp text-base"></i>
-                                <span>Kirim Pesan Langsung Ke WhatsApp</span>
-                            </button>
-                        </form>
+                    <div class="pt-6 border-t border-slate-200/60 mt-6">
+                        <a href="https://maps.app.goo.gl/ZpHni1vUjrHed2nz5" target="_blank" rel="noopener" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-brand-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                            <i class="fa-solid fa-diamond-turn-right text-amber-400"></i>
+                            <span>Buka di Aplikasi Google Maps</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Right Real Google Maps Embed -->
-                <div class="lg:col-span-6 glass-card rounded-3xl p-6 border border-white shadow-glass h-full flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="font-extrabold text-slate-900 text-base flex items-center gap-2">
-                                <i class="fa-solid fa-map text-brand-600"></i> Peta Lokasi Google Maps
-                            </span>
-                            <span class="px-3 py-1 bg-brand-100 text-brand-700 font-bold text-xs rounded-full">FK UIN Cireundeu</span>
+                <!-- Google Maps Embed -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-3 rounded-3xl shadow-xl h-full min-h-[320px] sm:min-h-[380px] flex flex-col">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-slate-200/80 flex-1 shadow-inner">
+                            <iframe 
+                                title="Google Maps Location Es Teh Solo Buaran"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7!2d106.687!3d-6.321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTknMTUuNiJTIDEwNsKwNDEnMTMuMiJF!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                                class="w-full h-full border-0 min-h-[300px]" 
+                                allowfullscreen="" 
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
-                        <p class="text-xs text-slate-600 mb-4">Gunakan rute di bawah ini untuk datang langsung ke outlet Superzy Laundry Place.</p>
                     </div>
-
-                    <!-- Embed Iframe Maps -->
-                    <div class="w-full h-[380px] rounded-2xl overflow-hidden border border-brand-100 shadow-inner">
-                        <iframe 
-                            title="Google Maps Superzy Laundry"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5908223631525!2d106.7628881!3d-6.3173516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1a0e1cb3333%3A0x6fb87db4d2c8fb6a!2sJl.%20Inpres%20No.43B%2C%20RT.5%2FRW.9%2C%20Cireundeu%2C%20Kec.%20Ciputat%20Tim.%2C%20Kota%20Tangerang%20Selatan%2C%20Banten%2015419!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                    </div>
-
-                    <a href="https://maps.app.goo.gl/HqRoaYrRULjgE9fz8?g_st=aw" target="_blank" class="mt-4 w-full py-3 rounded-xl bg-white border border-brand-200 text-brand-700 font-bold text-xs text-center shadow-sm hover:bg-brand-50 transition-all block">
-                        <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Buka Aplikasi Google Maps Lengkap
-                    </a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Floating WhatsApp Action -->
-    <a href="https://wa.me/6285161597865?text=Halo%20Superzy%20Laundry,%20saya%20butuh%20bantuan%20laundry" target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center text-2xl shadow-blueGlow hover:scale-110 transition-transform">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 text-sm border-t border-slate-800">
+    <footer class="bg-slate-900 backdrop-blur-md text-slate-400 py-10 border-t border-slate-800 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white text-lg">
-                        <i class="fa-solid fa-soap"></i>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold shadow-md">
+                        <i class="fa-solid fa-leaf text-xs"></i>
                     </div>
-                    <div>
-                        <span class="font-extrabold text-base tracking-tight block">SUPERZY LAUNDRY</span>
-                        <span class="text-[10px] text-slate-400">Place FK UIN Jakarta</span>
-                    </div>
+                    <span class="font-extrabold text-white text-sm">ES TEH SOLO</span>
+                    <span class="text-slate-500">| Buaran Tangerang Selatan</span>
                 </div>
-
-                <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-300 font-semibold">
-                    <a href="#home" class="hover:text-brand-400">Home</a>
-                    <a href="#layanan" class="hover:text-brand-400">Layanan</a>
-                    <a href="#portfolio" class="hover:text-brand-400">Portfolio</a>
-                    <a href="#tentang" class="hover:text-brand-400">Tentang</a>
-                    <a href="#kontak" class="hover:text-brand-400">Kontak</a>
-                </div>
-
-                <p class="text-xs text-slate-500">
-                    &copy; 2026 Superzy Laundry Place. All rights reserved.
-                </p>
+                <p>&copy; 2026 Es Teh Solo Buaran. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6285161597865?text=Halo%20Es%20Teh%20Solo%20Buaran,%20saya%20ingin%20tanya%20menu" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-600 hover:bg-brand-700 text-white flex items-center justify-center shadow-2xl shadow-brand-600/50 hover:scale-110 transition-all group">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-slate-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl border border-slate-800">
+            Pesan WhatsApp
+        </span>
+    </a>
+
+    <!-- JavaScript Logic -->
     <script>
-        // Mobile Navbar Toggle
-        const menuBtn = document.getElementById('menu-btn');
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            } else {
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
-            }
         });
 
-        document.querySelectorAll('.mobile-link').forEach(link => {
+        mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
             });
         });
 
-        // Hero Clothes Counter Interactive Logic
-        const counts = { shirts: 5, coats: 1, shoes: 1 };
+        // Price Calculator Functionality
+        const calcService = document.getElementById('calc-service');
+        const calcWeight = document.getElementById('calc-weight');
+        const calcWeightVal = document.getElementById('calc-weight-val');
+        const calcTotal = document.getElementById('calc-total');
+        const calcDetailText = document.getElementById('calc-detail-text');
+        const calcWaBtn = document.getElementById('calc-wa-btn');
 
-        function changeCount(item, delta) {
-            counts[item] = Math.max(0, counts[item] + delta);
-            document.getElementById(`count-${item}`).innerText = counts[item];
+        function updateCalculator() {
+            const pricePerUnit = parseInt(calcService.value);
+            const cups = parseInt(calcWeight.value);
+            const selectedOption = calcService.options[calcService.selectedIndex];
+            const serviceName = selectedOption.getAttribute('data-name');
+            
+            calcWeightVal.innerText = `${cups} Cup`;
 
-            // Calculate estimated weight
-            const estKg = (counts.shirts * 0.25).toFixed(1);
-            const satuanCount = counts.coats + counts.shoes;
-            document.getElementById('estimated-weight').innerText = `± ${estKg} Kg + ${satuanCount} Item Satuan`;
+            const total = pricePerUnit * cups;
+            calcTotal.innerText = `Rp ${total.toLocaleString('id-ID')}`;
+            
+            const detailStr = `${serviceName} (${cups} Cup)`;
+            calcDetailText.innerText = detailStr;
+
+            const waMessage = `Halo Es Teh Solo Buaran, saya mau order:%0A- Menu: ${serviceName}%0A- Jumlah: ${cups} Cup%0A- Estimasi Biaya: Rp ${total.toLocaleString('id-ID')}`;
+            calcWaBtn.href = `https://wa.me/6285161597865?text=${waMessage}`;
         }
 
-        function sendEstimatedOrder() {
-            const text = `Halo Superzy Laundry, saya ingin konsultasi order:\n- Pakaian Harian: ${counts.shirts} pcs\n- Jas/Snelli: ${counts.coats} pcs\n- Sepatu/Tas: ${counts.shoes} pcs`;
-            window.open(`https://wa.me/6285161597865?text=${encodeURIComponent(text)}`, '_blank');
-        }
+        calcService.addEventListener('change', updateCalculator);
+        calcWeight.addEventListener('input', updateCalculator);
 
-        // Service Tabs Filtering
-        function filterService(category) {
-            const tabs = document.querySelectorAll('.svc-tab');
-            const cards = document.querySelectorAll('.svc-card');
-
-            tabs.forEach(tab => {
-                tab.classList.remove('bg-brand-600', 'text-white', 'shadow-blueGlow');
-                tab.classList.add('bg-white/80', 'text-slate-700');
-            });
-
-            event.target.classList.remove('bg-white/80', 'text-slate-700');
-            event.target.classList.add('bg-brand-600', 'text-white', 'shadow-blueGlow');
-
-            cards.forEach(card => {
-                if (category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Interactive Before After Image Slider Drag Logic
-        const slider = document.getElementById('ba-slider');
-        const afterImg = document.getElementById('ba-after');
-        const handle = document.getElementById('ba-handle');
-        let isDragging = false;
-
-        function setSliderPos(x) {
-            const rect = slider.getBoundingClientRect();
-            let pos = ((x - rect.left) / rect.width) * 100;
-            if (pos < 0) pos = 0;
-            if (pos > 100) pos = 100;
-            afterImg.style.width = pos + '%';
-            handle.style.left = pos + '%';
-        }
-
-        slider.addEventListener('mousedown', (e) => { isDragging = true; setSliderPos(e.clientX); });
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        window.addEventListener('mousemove', (e) => { if (isDragging) setSliderPos(e.clientX); });
-
-        slider.addEventListener('touchstart', (e) => { isDragging = true; setSliderPos(e.touches[0].clientX); });
-        window.addEventListener('touchend', () => { isDragging = false; });
-        window.addEventListener('touchmove', (e) => { if (isDragging) setSliderPos(e.touches[0].clientX); });
-
-        // Direct WA Form Submit
-        document.getElementById('wa-order-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('wa-name').value;
-            const service = document.getElementById('wa-service').value;
-            const address = document.getElementById('wa-address').value;
-
-            const text = `Halo Superzy Laundry, saya mau order laundry!\nNama: ${name}\nLayanan: ${service}\nAlamat/Catatan: ${address}`;
-            window.open(`https://wa.me/6285161597865?text=${encodeURIComponent(text)}`, '_blank');
-        });
+        updateCalculator();
     </script>
 </body>
 </html>
