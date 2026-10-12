@@ -115,8 +115,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <a href="#" class="flex items-center gap-2.5 group">
-                    <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-md border border-slate-100 group-hover:scale-105 transition-all">
-                        <img src="image_0136d3.png" alt="Es Teh Solo Logo" class="w-full h-full object-contain">
+                    <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-md border border-slate-100 group-hover:scale-105 transition-all overflow-hidden">
+                        <svg viewBox="0 0 500 500" class="w-full h-full">
+                            <path d="M160 380 C110 320, 110 220, 160 160 C210 220, 210 320, 160 380 Z" fill="#22c55e"/>
+                            <path d="M250 380 C200 300, 200 180, 250 120 C300 180, 300 300, 250 380 Z" fill="#16a34a"/>
+                            <path d="M340 380 C290 320, 290 220, 340 160 C390 220, 390 320, 340 380 Z" fill="#22c55e"/>
+                        </svg>
                     </div>
                     <div>
                         <span class="font-black text-lg sm:text-xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">ES TEH SOLO</span>
@@ -235,7 +239,6 @@
 
                             <!-- Cairan Teh Bergelombang -->
                             <div class="w-full h-4/5 bg-gradient-to-t from-amber-950 via-amber-800 to-amber-600/95 animate-wave-tea rounded-b-2xl relative">
-                                <!-- Bintik Embun Gelas -->
                                 <div class="w-2 h-2 rounded-full bg-white/60 absolute top-8 left-4"></div>
                                 <div class="w-1.5 h-1.5 rounded-full bg-white/50 absolute top-16 right-5"></div>
                                 <div class="w-2 h-2 rounded-full bg-white/70 absolute top-24 left-8"></div>
@@ -243,7 +246,10 @@
 
                             <!-- Logo Stiker Cup -->
                             <div class="absolute top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border-2 border-emerald-200 shadow-xl flex items-center justify-center">
-                                <img src="image_0136d3.png" alt="Es Teh Solo Logo" class="h-12 object-contain">
+                                <div class="text-center">
+                                    <p class="text-xs font-black text-brand-700 tracking-wider">ES TEH SOLO</p>
+                                    <p class="text-[8px] font-bold text-slate-500 tracking-widest uppercase">S.O.L.O</p>
+                                </div>
                             </div>
 
                             <!-- Kilatan Cahaya Kaca Gelas -->
@@ -412,9 +418,9 @@
                         <div>
                             <div class="flex justify-between items-center mb-2">
                                 <label class="text-xs font-bold uppercase text-slate-500">Jumlah Cup / Porsi</label>
-                                <span id="calc-weight-val" class="text-sm font-extrabold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-md border border-brand-200">5 Cup</span>
+                                <span id="calc-weight-val" class="text-sm font-extrabold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-md border border-brand-200">1 Cup</span>
                             </div>
-                            <input type="range" id="calc-weight" min="1" max="50" value="5" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-600 shadow-inner">
+                            <input type="range" id="calc-weight" min="1" max="50" value="1" class="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-600 shadow-inner">
                             <div class="flex justify-between text-[10px] text-slate-400 font-semibold mt-1.5">
                                 <span>1 Cup</span>
                                 <span>25 Cup</span>
@@ -426,8 +432,8 @@
                     <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 text-white p-6 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-brand-400/30">
                         <div>
                             <p class="text-xs font-bold text-brand-100 uppercase tracking-wider">Estimasi Total Biaya</p>
-                            <p id="calc-total" class="text-3xl font-black mt-0.5 tracking-tight">Rp 30.000</p>
-                            <p id="calc-detail-text" class="text-xs text-brand-100 mt-1 font-medium">Es Teh Solo Original (5 Cup)</p>
+                            <p id="calc-total" class="text-3xl font-black mt-0.5 tracking-tight">Rp 6.000</p>
+                            <p id="calc-detail-text" class="text-xs text-brand-100 mt-1 font-medium">Es Teh Solo Original (1 Cup)</p>
                         </div>
                         <a id="calc-wa-btn" href="#" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-emerald-50 text-brand-700 text-xs font-extrabold rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-105 whitespace-nowrap">
                             <i class="fa-brands fa-whatsapp text-xl text-emerald-600"></i>
@@ -520,7 +526,11 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
                 <div class="flex items-center gap-2">
                     <div class="w-7 h-7 rounded-lg bg-white p-0.5 flex items-center justify-center font-bold shadow-md">
-                        <img src="image_0136d3.png" alt="Es Teh Solo Logo" class="w-full h-full object-contain">
+                        <svg viewBox="0 0 500 500" class="w-full h-full">
+                            <path d="M160 380 C110 320, 110 220, 160 160 C210 220, 210 320, 160 380 Z" fill="#22c55e"/>
+                            <path d="M250 380 C200 300, 200 180, 250 120 C300 180, 300 300, 250 380 Z" fill="#16a34a"/>
+                            <path d="M340 380 C290 320, 290 220, 340 160 C390 220, 390 320, 340 380 Z" fill="#22c55e"/>
+                        </svg>
                     </div>
                     <span class="font-extrabold text-white text-sm">ES TEH SOLO</span>
                     <span class="text-slate-500">| Buaran Tangerang Selatan</span>
