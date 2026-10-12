@@ -116,11 +116,7 @@
             <div class="flex justify-between h-16 items-center">
                 <a href="#" class="flex items-center gap-2.5 group">
                     <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-md border border-slate-100 group-hover:scale-105 transition-all overflow-hidden">
-                        <svg viewBox="0 0 500 500" class="w-full h-full">
-                            <path d="M160 380 C110 320, 110 220, 160 160 C210 220, 210 320, 160 380 Z" fill="#22c55e"/>
-                            <path d="M250 380 C200 300, 200 180, 250 120 C300 180, 300 300, 250 380 Z" fill="#16a34a"/>
-                            <path d="M340 380 C290 320, 290 220, 340 160 C390 220, 390 320, 340 380 Z" fill="#22c55e"/>
-                        </svg>
+                        <img src="logo.png" alt="Logo Es Teh Solo" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span class="font-black text-lg sm:text-xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 bg-clip-text text-transparent">ES TEH SOLO</span>
@@ -245,11 +241,8 @@
                             </div>
 
                             <!-- Logo Stiker Cup -->
-                            <div class="absolute top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl border-2 border-emerald-200 shadow-xl flex items-center justify-center">
-                                <div class="text-center">
-                                    <p class="text-xs font-black text-brand-700 tracking-wider">ES TEH SOLO</p>
-                                    <p class="text-[8px] font-bold text-slate-500 tracking-widest uppercase">S.O.L.O</p>
-                                </div>
+                            <div class="absolute top-1/2 -translate-y-1/2 z-20 bg-white/95 backdrop-blur-md p-2 rounded-2xl border-2 border-emerald-200 shadow-xl flex items-center justify-center">
+                                <img src="logo.png" alt="Logo Es Teh Solo" class="h-10 object-contain">
                             </div>
 
                             <!-- Kilatan Cahaya Kaca Gelas -->
@@ -525,12 +518,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
                 <div class="flex items-center gap-2">
-                    <div class="w-7 h-7 rounded-lg bg-white p-0.5 flex items-center justify-center font-bold shadow-md">
-                        <svg viewBox="0 0 500 500" class="w-full h-full">
-                            <path d="M160 380 C110 320, 110 220, 160 160 C210 220, 210 320, 160 380 Z" fill="#22c55e"/>
-                            <path d="M250 380 C200 300, 200 180, 250 120 C300 180, 300 300, 250 380 Z" fill="#16a34a"/>
-                            <path d="M340 380 C290 320, 290 220, 340 160 C390 220, 390 320, 340 380 Z" fill="#22c55e"/>
-                        </svg>
+                    <div class="w-7 h-7 rounded-lg bg-white p-0.5 flex items-center justify-center font-bold shadow-md overflow-hidden">
+                        <img src="logo.png" alt="Logo Es Teh Solo" class="w-full h-full object-contain">
                     </div>
                     <span class="font-extrabold text-white text-sm">ES TEH SOLO</span>
                     <span class="text-slate-500">| Buaran Tangerang Selatan</span>
@@ -594,6 +583,8 @@
         calcService.addEventListener('change', updateCalculator);
         calcWeight.addEventListener('input', updateCalculator);
 
+        // Jalankan fungsi kalkulator terus sebaik sahaja halaman dimuatkan
+        window.addEventListener('DOMContentLoaded', updateCalculator);
         updateCalculator();
     </script>
 </body>
